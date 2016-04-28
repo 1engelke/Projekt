@@ -1,4 +1,4 @@
-// package ???;
+package digitale_stadt.cyclecity_android;
 
 import android.location.Location;
 import java.util.Date;
@@ -12,13 +12,14 @@ import java.util.Date;
 
 public class Position {
 
-    private long positionId;
+    private long id;
     private int trackId;
     private String deviceId;
     private Date time;
     private double latitude;
     private double longitude;
     private double altitude;
+    private int sent;
 
     //Standardkonstruktor
 
@@ -34,12 +35,15 @@ public class Position {
         latitude = location.getLatitude();
         longitude = location.getLongitude();
         altitude = location.getAltitude();
+        sent = 0;
     }
 
     // Getter und Setter
+    public int getSent() {return sent;}
+    public void setSent(int sent) {this.sent = sent;}
 
-    public long getPositionId() {return positionId;}
-    public void setPositionId(long positionId) {this.positionId = positionId;}
+    public long getId() {return id;}
+    public void setId(long id) {this.id = id;}
 
     public int getTrackId() {return trackId;}
     public void setTrackId(int trackId) {this.trackId = trackId;}

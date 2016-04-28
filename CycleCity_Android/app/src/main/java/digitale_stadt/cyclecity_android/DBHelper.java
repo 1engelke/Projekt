@@ -1,4 +1,4 @@
-// package ???;
+package digitale_stadt.cyclecity_android;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -72,7 +72,8 @@ public class DBHelper extends SQLiteOpenHelper {
         "timestamp INTEGER," +
         "latitude REAL," +
         "longitude REAL," +
-        "altitude REAL");
+        "altitude REAL," +
+        "sent INTEGER)");
     }
 
     @Override
@@ -92,8 +93,9 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put("latitude", position.getLatitude());
         values.put("longitude", position.getLongitude());
         values.put("altitude", position.getAltitude());
+        values.put("sent", position.getSent());
 
-        db.insertOrThrow("position", null, values);
+        db.insertOrThrow("positions", null, values);
     }
 
     public void insertPositionAsync(final Position position, DatabaseHandler<Void> handler) {
@@ -115,7 +117,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
                 cursor.moveToFirst();
                 position.setId(cursor.getLong(cursor.getColumnIndex("id")));
-                // TODO: was ist mit Track ID??
                 position.setTrackId(cursor.getInt(cursor.getColumnIndex("trackId")));
                 position.setDeviceId(cursor.getString(cursor.getColumnIndex("deviceId")));
                 position.setTime(new Date(cursor.getLong(cursor.getColumnIndex("time"))));

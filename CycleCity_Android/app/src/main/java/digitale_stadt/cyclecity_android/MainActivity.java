@@ -1,5 +1,6 @@
 package digitale_stadt.cyclecity_android;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,7 +13,7 @@ import android.widget.ToggleButton;
 import static android.widget.Toast.LENGTH_SHORT;
 
 public class MainActivity extends AppCompatActivity {
-
+    Intent trackerService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,10 +29,13 @@ public class MainActivity extends AppCompatActivity {
         if (on) {
             Log.i("info", "Tracking is on!");
             Toast.makeText(MainActivity.this, "Tacking started", Toast.LENGTH_SHORT).show();
+            trackerService = new Intent(this, TrackerService.class);
+            this.startService(trackerService);
         }
         else {
             Log.i("info", "Tracking is off!");
             Toast.makeText(MainActivity.this, "Tacking stopped", LENGTH_SHORT).show();
+            this.stopService(trackerService);
         }
 
     }
