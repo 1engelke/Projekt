@@ -36,9 +36,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public static String POST(Timpestamp timestamp, Position position, FahrtID fahrtID){
-        
-    }
+    //public static String POST(Timpestamp timestamp, Position position, FahrtID fahrtID){
+    //
+    //}
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
